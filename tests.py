@@ -53,7 +53,7 @@ class TestBooksCollector:
 
     def test_get_book_rating_check_rating_if_books_not_added(self):  #6
         collector = BooksCollector()
-        assert collector.get_books_rating() != 1
+        assert len(collector.get_books_rating()) == 0
 
     def test_get_books_with_specific_rating_check_rating_by_one(self): #7
         collector = BooksCollector()
@@ -63,8 +63,7 @@ class TestBooksCollector:
         collector.add_new_book('Властелин колец')
         collector.set_book_rating('Хоббит', 7)
         collector.set_book_rating('Властелин колец', 8)
-        for i in 'Гордость и предубеждение и зомби', 'Что делать, если ваш кот хочет вас убить':
-            assert i in collector.get_books_with_specific_rating(1)
+        assert 'Гордость и предубеждение и зомби' and 'Что делать, если ваш кот хочет вас убить' in collector.get_books_with_specific_rating(1)
 
     def test_add_book_in_favorites_add_two_books(self): #8
         collector = BooksCollector()
